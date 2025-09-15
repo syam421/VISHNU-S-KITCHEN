@@ -1,740 +1,249 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vishnu's Kitchen — Authentic Flavors | Guntur, Lakshmi Puram</title>
-  <meta name="description" content="Vishnu's Kitchen - Guntur, Lakshmi Puram. Order online, reserve a table, read reviews, and explore our menu." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishnu's Kitchen</title>
   <style>
-    /* ----------------- Theme variables ----------------- */
-    :root{
-      --red: #c62828;        /* primary accent */
-      --red-dark: #9a1f1f;
-      --white: #ffffff;
-      --muted: #6b6b6b;
-      --bg: linear-gradient(180deg,#fff 0%, #fff7f7 50%, #fff 100%);
-      --glass: rgba(255,255,255,0.7);
-      --radius: 12px;
-      --container: 1150px;
-      --shadow: 0 8px 24px rgba(0,0,0,0.08);
-      --card-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff5f5;
+      color: #333;
     }
-
-    /* ----------------- Base ----------------- */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg); color:#222; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      -webkit-tap-highlight-color: transparent;
+    header {
+      background-color: #b30000;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-
-    .wrap{max-width:var(--container); margin:28px auto; padding:20px;}
-
-    /* ----------------- Header / Nav ----------------- */
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:18px;
-      background:linear-gradient(90deg, rgba(198,40,40,0.06), rgba(198,40,40,0.01));
-      padding:14px; border-radius:14px; box-shadow:var(--shadow);
+    header img {
+      width: 100px;
+      border-radius: 50%;
     }
-    .brand{display:flex; align-items:center; gap:14px}
-    .logo{
-      width:72px; height:72px; border-radius:14px; overflow:hidden; flex-shrink:0; box-shadow:var(--card-shadow);
-      border:4px solid var(--white);
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #ff4d4d;
+      padding: 10px;
     }
-    .logo img{width:100%; height:100%; object-fit:cover}
-    .brand-title{line-height:1}
-    .brand-title h1{margin:0; font-size:20px; letter-spacing:0.3px; color:var(--red-dark)}
-    .brand-title p{margin:2px 0 0 0; font-size:13px; color:var(--muted)}
-
-    nav{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
-    nav button{
-      background:transparent; border:0; padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:600;
-      transition:all .18s ease; color:#222;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
     }
-    nav button:hover{transform:translateY(-2px)}
-    nav button.active{background:var(--white); box-shadow:var(--card-shadow); color:var(--red)}
-
-    .top-actions{display:flex; gap:10px; align-items:center}
-    .rating-pill{display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px; background:var(--white); box-shadow:var(--card-shadow); font-weight:700; color:var(--red-dark)}
-    .contact{font-size:13px; color:var(--muted)}
-
-    /* ----------------- Layout ----------------- */
-    main{margin-top:18px}
-    .hero{
-      display:grid; grid-template-columns:1fr 420px; gap:20px; align-items:stretch; margin-bottom:18px;
+    nav a:hover {
+      text-decoration: underline;
     }
-    @media (max-width:980px){ .hero{grid-template-columns:1fr} .hero-right{order:2} }
-    .card{background:var(--white); border-radius:12px; padding:16px; box-shadow:var(--card-shadow)}
-    .hero-left{padding:20px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,250,250,0.95));}
-    .hero-left h2{margin:0 0 6px 0; color:var(--red-dark); font-size:26px}
-    .hero-left p.lead{margin:8px 0 12px 0; color:var(--muted); font-size:15px}
-
-    /* CTA */
-    .ctas{display:flex; gap:10px; margin-top:12px}
-    .btn{padding:10px 14px; border-radius:10px; border:0; cursor:pointer; font-weight:700}
-    .btn-primary{background:var(--red); color:var(--white); box-shadow:0 8px 20px rgba(198,40,40,0.18)}
-    .btn-outline{background:transparent; border:2px solid rgba(198,40,40,0.12); color:var(--red-dark)}
-
-    /* Right column quick card */
-    .hero-right img{width:100%; height:240px; object-fit:cover; border-radius:10px}
-    .small{font-size:13px; color:var(--muted)}
-
-    /* ----------------- Grid content ----------------- */
-    .grid{display:grid; grid-template-columns:2fr 360px; gap:18px; align-items:start; margin-top:18px}
-    @media (max-width:1000px){ .grid{grid-template-columns:1fr} }
-
-    .menu-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-    @media (max-width:700px){ .menu-grid{grid-template-columns:1fr} }
-    .menu-item{display:flex; gap:12px; align-items:center; padding:12px; border-radius:10px; background:linear-gradient(180deg,#fff,#fffaf9); border:1px solid rgba(0,0,0,0.03)}
-    .menu-item .thumb{width:110px; height:80px; border-radius:8px; overflow:hidden; flex-shrink:0}
-    .menu-item .thumb img{width:100%; height:100%; object-fit:cover}
-    .menu-item h4{margin:0 0 6px 0}
-    .menu-price{font-weight:800; color:var(--red-dark)}
-
-    /* cart / actions */
-    .cart-card .cart-row{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:8px 0; border-bottom:1px dashed #f1f1f1}
-    .cart-empty{padding:16px; text-align:center; color:var(--muted)}
-
-    /* reservations */
-    .reserve-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width:700px){ .reserve-grid{grid-template-columns:1fr} }
-
-    /* notifications panel */
-    .notif-wrap{position:fixed; right:16px; bottom:16px; width:320px; z-index:9999; display:flex; flex-direction:column; gap:10px}
-    .notif{background:var(--white); border-left:6px solid var(--red); padding:10px 12px; border-radius:8px; box-shadow:var(--card-shadow); font-size:14px}
-    .notif .time{font-size:12px; color:var(--muted); margin-top:6px}
-
-    /* footer */
-    footer{margin-top:22px; text-align:center; color:var(--muted); font-size:13px; padding:20px 6px}
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    input, textarea, select{width:100%; padding:10px; border-radius:8px; border:1px solid #eee; font-family:inherit}
-    label{font-size:13px; color:#333; margin-bottom:6px; display:block}
-    .flex{display:flex; gap:8px; align-items:center}
-    .badge{background:var(--red); color:#fff; padding:6px 8px; border-radius:999px; font-weight:700}
-
-    /* responsive */
-    @media (max-width:480px){
-      .brand-title h1{font-size:18px}
-      .logo{width:56px;height:56px}
+    section {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      color: #b30000;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #b30000;
+      display: inline-block;
+    }
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .menu-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .menu-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    footer {
+      background: #b30000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .review-form input, .review-form textarea, .reservation-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #b30000;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff1a1a;
+    }
+    .notification {
+      background: #ffcccc;
+      color: #b30000;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="wrap" id="app">
-    <!-- Header -->
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"><img src="images/IMAGE1.jpg" alt="Vishnu's Kitchen logo (IMAGE1)"></div>
-        <div class="brand-title">
-          <h1>VISHNU'S KITCHEN</h1>
-          <p class="small">Guntur, Lakshmi Puram — Authentic local flavors</p>
-        </div>
+
+  <!-- Notifications -->
+  <div class="notification" id="notification">🔥 Welcome to Vishnu's Kitchen - Rated 4.5 in Guntur!</div>
+
+  <!-- Header -->
+  <header>
+    <img src="IMAGE1.jpg" alt="Vishnu's Kitchen Logo">
+    <h1>Vishnu's Kitchen</h1>
+    <p>"Where Taste Meets Tradition"</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#branches">Branches</a>
+    <a href="#menu">Menu</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#reservation">Reservation</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Welcome to Vishnu's Kitchen, located in Lakshmi Puram, Guntur. We bring authentic flavors, fresh ingredients, and a delightful dining experience. Our customers rate us 4.5 stars!</p>
+    <img src="IMAGE2.jpg" alt="Restaurant Interior" style="width:100%; border-radius:10px;">
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>🍴 Dine-in</li>
+      <li>🚚 Food Delivery (via Swiggy & Zomato)</li>
+      <li>📦 Takeaway</li>
+      <li>📱 Online Ordering</li>
+      <li>📅 Table Reservation</li>
+    </ul>
+  </section>
+
+  <!-- Branches -->
+  <section id="branches">
+    <h2>Our Branches</h2>
+    <p>Currently operating in <strong>Guntur, Lakshmi Puram</strong>. More branches coming soon!</p>
+    <img src="IMAGE3.jpg" alt="Branch" style="width:100%; border-radius:10px;">
+  </section>
+
+  <!-- Menu -->
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="menu-item">
+        <img src="IMAGE4.jpg" alt="Chicken Biryani">
+        <h3>Guntur Chicken Biryani</h3>
+        <p>₹220</p>
+        <button>Order Now</button>
       </div>
-
-      <nav aria-label="Main navigation" id="nav">
-        <button class="active" data-view="home">Home</button>
-        <button data-view="menu">Menu</button>
-        <button data-view="reservations">Reservations</button>
-        <button data-view="branches">Branches</button>
-        <button data-view="services">Services</button>
-        <button data-view="about">About</button>
-        <button data-view="contact">Contact</button>
-        <button data-view="cart">Cart <span id="nav-cart" class="badge" style="margin-left:8px">0</span></button>
-      </nav>
-
-      <div class="top-actions">
-        <div class="rating-pill" aria-hidden="true">
-          ★ <span id="avg-rating">4.5</span>
-        </div>
-        <div class="contact" title="Owner and phone">
-          <div><strong>Owner:</strong> Vishnu Kondru</div>
-          <div style="margin-top:4px;"><strong>Phone:</strong> +91 81234 56789</div>
-        </div>
+      <div class="menu-item">
+        <img src="IMAGE5.jpg" alt="Paneer Butter Masala">
+        <h3>Paneer Butter Masala</h3>
+        <p>₹180</p>
+        <button>Order Now</button>
       </div>
-    </header>
-
-    <!-- Hero -->
-    <main>
-      <section class="hero">
-        <div class="hero-left card">
-          <h2>Good food, warm hearts — every plate tells a story.</h2>
-          <p class="lead">Welcome to Vishnu's Kitchen. We serve authentic regional favorites with a modern touch. Order online, reserve a table, or visit us at Guntur, Lakshmi Puram.</p>
-          <div class="ctas">
-            <button class="btn btn-primary" id="order-now">Order Now</button>
-            <button class="btn btn-outline" id="reserve-now">Reserve a Table</button>
-            <a class="btn" href="https://www.google.com/maps?q=Guntur,+Lakshmi+Puram" target="_blank" rel="noopener">Get Directions</a>
-          </div>
-
-          <div style="margin-top:16px" class="card" aria-live="polite">
-            <strong>Delivery Partners</strong>
-            <p class="small muted">Order through popular platforms</p>
-            <div style="display:flex; gap:10px; margin-top:8px">
-              <!-- Example deep-links (replace with your merchant links when available) -->
-              <a class="btn btn-outline" href="https://www.swiggy.com/search?q=Vishnu%27s%20Kitchen%20Guntur" target="_blank" rel="noopener">Order via Swiggy</a>
-              <a class="btn btn-outline" href="https://www.zomato.com/search?query=Vishnu%27s%20Kitchen%20Guntur" target="_blank" rel="noopener">Order via Zomato</a>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-right card">
-          <img src="images/IMAGE2.jpg" alt="Delicious dishes at Vishnu's Kitchen (IMAGE2)">
-          <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center">
-            <div>
-              <div style="font-weight:800; color:var(--red-dark)">Located</div>
-              <div class="small">Guntur, Lakshmi Puram</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-weight:800">Open</div>
-              <div class="small">10:00 AM — 10:00 PM</div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <!-- Main grid (views) -->
-      <div class="grid">
-        <div id="view-root">
-          <!-- SPA views are injected here by JS. Initial fallback content: Home. -->
-        </div>
-
-        <!-- Right column: cart & quick actions -->
-        <aside>
-          <div class="card cart-card">
-            <h3>Quick Cart</h3>
-            <div id="mini-cart" style="margin-top:8px"></div>
-          </div>
-
-          <div style="height:12px"></div>
-
-          <div class="card">
-            <h4>Contact</h4>
-            <p class="small">Owner: <strong>Vishnu Kondru</strong></p>
-            <p class="small">Phone: <strong>+91 81234 56789</strong></p>
-            <p class="small">Address: Guntur, Lakshmi Puram</p>
-            <img src="images/IMAGE3.jpg" alt="Interior - IMAGE3" style="margin-top:10px; border-radius:8px;">
-          </div>
-        </aside>
+      <div class="menu-item">
+        <img src="IMAGE6.jpg" alt="Veg Thali">
+        <h3>Veg Thali</h3>
+        <p>₹150</p>
+        <button>Order Now</button>
       </div>
+    </div>
+  </section>
 
-      <footer>
-        © <strong>Vishnu's Kitchen</strong> — Guntur, Lakshmi Puram • Rating: <strong id="footer-rating">4.5</strong>
-      </footer>
-    </main>
-  </div>
+  <!-- Reviews -->
+  <section id="reviews">
+    <h2>Customer Reviews</h2>
+    <form class="review-form">
+      <input type="text" placeholder="Your Name" required>
+      <textarea placeholder="Write your review..." required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+    <div id="review-list"></div>
+  </section>
 
-  <!-- Notifications container (fixed bottom-right) -->
-  <div class="notif-wrap" id="notifications" aria-live="polite"></div>
+  <!-- Reservation -->
+  <section id="reservation">
+    <h2>Reserve a Table</h2>
+    <form class="reservation-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="number" placeholder="No. of People" required>
+      <input type="date" required>
+      <input type="time" required>
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
 
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Location: Lakshmi Puram, Guntur</p>
+    <p>📞 Phone: 81234 56789</p>
+    <p>👨‍🍳 Owner: Vishnu Kondru</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Vishnu's Kitchen | Powered by ❤️ Taste</p>
+  </footer>
+
+  <!-- JavaScript -->
   <script>
-    /************************************************************************
-     * Vishnu's Kitchen - Single-file professional SPA (HTML + CSS + JS)
-     * Features:
-     * - Multi-view single file (Home, Menu, Reservations, Branches, Services, About, Contact, Cart)
-     * - Red & white theme
-     * - Cart, checkout (simulated payment), localStorage persistence
-     * - Table reservation system (localStorage) with simulated realtime notifications
-     * - Delivery partner links (Swiggy, Zomato)
-     * - Contact details updated (owner & phone)
-     *
-     * Replace images in /images/ (IMAGE1..IMAGE8) with real photos.
-     * For real-time notifications in production: integrate Firebase / Pusher and replace simulation code.
-     ************************************************************************/
-
-    /* -------------------- Demo Data -------------------- */
-    const SITE = {
-      name: "Vishnu's Kitchen",
-      location: "Guntur, Lakshmi Puram",
-      owner: "Vishnu Kondru",
-      phone: "+91 81234 56789"
-    };
-
-    const initialMenu = [
-      {id:1, name:'Guntur Chicken Biryani', desc:'Spicy, aromatic biryani with heritage masalas.', price:220, image:'images/IMAGE4.jpg', category:'Non-Veg'},
-      {id:2, name:'Paneer Butter Masala', desc:'Creamy tomato-based curry with soft paneer cubes.', price:180, image:'images/IMAGE5.jpg', category:'Veg'},
-      {id:3, name:'Crispy Dosa', desc:'Golden dosa with sambar & chutney.', price:80, image:'images/IMAGE6.jpg', category:'Veg'},
-      {id:4, name:'Masala Dosa', desc:'Classic masala dosa stuffed with spiced potatoes.', price:90, image:'images/IMAGE7.jpg', category:'Veg'},
-      {id:5, name:'Mirchi Bajji', desc:'Crispy stuffed chillies — a perfect snack.', price:50, image:'images/IMAGE8.jpg', category:'Veg'}
+    // Auto notification change
+    const notes = [
+      "🔥 Welcome to Vishnu's Kitchen - Rated 4.5 in Guntur!",
+      "🚚 Order via Swiggy & Zomato - Fast Delivery!",
+      "🍴 Reserve your table online today!"
     ];
+    let idx = 0;
+    setInterval(() => {
+      document.getElementById("notification").innerText = notes[idx];
+      idx = (idx + 1) % notes.length;
+    }, 4000);
 
-    const initialReviews = [
-      {name:'Admin', rating:5, comment:'Authentic taste and warm hospitality.'},
-      {name:'Ravi', rating:4, comment:'Loved the biryani!'}
-    ];
-
-    /* -------------------- localStorage helpers -------------------- */
-    function lsGet(key, fallback){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):fallback;}catch(e){return fallback;} }
-    function lsSet(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
-
-    // Initialize persistent data if missing
-    if(!lsGet('vk_menu')) lsSet('vk_menu', initialMenu);
-    if(!lsGet('vk_reviews')) lsSet('vk_reviews', initialReviews);
-    if(!lsGet('vk_cart')) lsSet('vk_cart', []);
-    if(!lsGet('vk_reservations')) lsSet('vk_reservations', []);
-    if(!lsGet('vk_orders')) lsSet('vk_orders', []);
-
-    /* -------------------- Utility functions -------------------- */
-    function $(sel){ return document.querySelector(sel); }
-    function $all(sel){ return Array.from(document.querySelectorAll(sel)); }
-    function fmtCurrency(n){ return '₹' + Number(n).toFixed(0); }
-    function nowISO(){ return new Date().toISOString(); }
-    function humanTime(iso){ const d=new Date(iso); return d.toLocaleString(); }
-
-    /* -------------------- Ratings -------------------- */
-    function calcAverageRating(reviews){
-      if(!reviews || reviews.length===0) return 0;
-      const s = reviews.reduce((a,r)=>a + (r.rating||0),0);
-      return Math.round((s/reviews.length)*10)/10;
-    }
-
-    function updateRatingsUI(){
-      const reviews = lsGet('vk_reviews', []);
-      const avg = calcAverageRating(reviews);
-      $('#avg-rating').textContent = avg.toFixed(1);
-      $('#footer-rating').textContent = avg.toFixed(1);
-    }
-
-    /* -------------------- Notifications (Simulated realtime) -------------------- */
-    const notifWrap = document.getElementById('notifications');
-
-    function showNotification(title, body, ttl=6000){
-      // In-page card
-      const id = 'n' + Date.now();
-      const el = document.createElement('div');
-      el.className = 'notif';
-      el.id = id;
-      el.innerHTML = `<strong>${title}</strong><div class="small">${body}</div><div class="time">${new Date().toLocaleTimeString()}</div>`;
-      notifWrap.prepend(el);
-      setTimeout(()=> el.style.opacity = '1', 20);
-      // desktop notification (ask permission)
-      if(window.Notification && Notification.permission === 'granted'){
-        new Notification(title, {body, icon:'images/IMAGE1.jpg'});
-      }
-      setTimeout(()=> {
-        try{ el.style.opacity = '0'; setTimeout(()=> el.remove(), 500); }catch(e){}
-      }, ttl);
-    }
-
-    // Request permission for desktop notifications (gentle)
-    if("Notification" in window && Notification.permission !== 'granted' && Notification.permission !== 'denied'){
-      try{ Notification.requestPermission(); }catch(e){}
-    }
-
-    /* Simulated realtime events generator (demo only) */
-    function startSimulatedRealtime(){
-      // Occasionally create fake order/reservation notifications to demonstrate
-      const samples = [
-        {title:'New Order', body:'Order #'+(1000+Math.floor(Math.random()*9000))+' received.'},
-        {title:'New Reservation', body:'Table reservation for 3 at '+(11+Math.floor(Math.random()*8))+':00.'},
-        {title:'New Review', body:'Someone left a 5-star review.'}
-      ];
-      // produce a notif every 25-45 seconds (demo)
-      setInterval(()=>{
-        const s = samples[Math.floor(Math.random()*samples.length)];
-        showNotification(s.title, s.body, 8000);
-      }, 30000 + Math.floor(Math.random()*15000));
-    }
-
-    /* -------------------- SPA routing & rendering -------------------- */
-    const nav = document.getElementById('nav');
-    nav.addEventListener('click', (evt) => {
-      const btn = evt.target.closest('button[data-view]');
-      if(!btn) return;
-      const view = btn.dataset.view;
-      renderView(view);
-      // set active class
-      $all('#nav button').forEach(b=> b.classList.toggle('active', b===btn));
+    // Review system
+    document.querySelector(".review-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = this.querySelector("input").value;
+      const review = this.querySelector("textarea").value;
+      const div = document.createElement("div");
+      div.style.borderBottom = "1px solid #ccc";
+      div.style.margin = "10px 0";
+      div.innerHTML = `<strong>${name}</strong>: ${review}`;
+      document.getElementById("review-list").appendChild(div);
+      this.reset();
     });
 
-    // Immediate buttons
-    $('#order-now').addEventListener('click', ()=>{ renderView('menu'); $all('#nav button').forEach(b=>b.classList.toggle('active', b.dataset.view==='menu')); });
-    $('#reserve-now').addEventListener('click', ()=>{ renderView('reservations'); $all('#nav button').forEach(b=>b.classList.toggle('active', b.dataset.view==='reservations')); });
-
-    function renderView(view='home'){
-      const root = document.getElementById('view-root');
-      if(view === 'home') return renderHome(root);
-      if(view === 'menu') return renderMenu(root);
-      if(view === 'cart') return renderCart(root);
-      if(view === 'reservations') return renderReservations(root);
-      if(view === 'branches') return renderBranches(root);
-      if(view === 'services') return renderServices(root);
-      if(view === 'about') return renderAbout(root);
-      if(view === 'contact') return renderContact(root);
-      // fallback
-      renderHome(root);
-    }
-
-    /* -------------------- Home -------------------- */
-    function renderHome(root){
-      const menu = lsGet('vk_menu', []);
-      root.innerHTML = `
-        <section class="card">
-          <h3>Featured</h3>
-          <p class="small muted">Our most-loved dishes</p>
-          <div class="menu-grid" id="home-featured">
-            ${menu.slice(0,4).map(m => `
-              <div class="menu-item">
-                <div class="thumb"><img src="${m.image}" alt="${m.name}"></div>
-                <div>
-                  <h4>${m.name}</h4>
-                  <div class="small">${m.desc}</div>
-                  <div style="margin-top:8px; display:flex; gap:10px; align-items:center">
-                    <div class="menu-price">${fmtCurrency(m.price)}</div>
-                    <button class="btn btn-primary" onclick="addToCart(${m.id})">Add</button>
-                  </div>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </section>
-
-        <section class="card" style="margin-top:12px">
-          <h3>Customer Reviews</h3>
-          <div id="reviews-list" style="margin-top:8px"></div>
-          <hr style="margin:12px 0"/>
-          <h4>Write a review</h4>
-          <form id="review-form">
-            <div style="display:flex; gap:8px">
-              <input type="text" id="r-name" placeholder="Your name" required />
-              <select id="r-rating" style="width:120px">
-                <option value="5">5 - Excellent</option>
-                <option value="4">4 - Very Good</option>
-                <option value="3">3 - Good</option>
-                <option value="2">2 - Fair</option>
-                <option value="1">1 - Poor</option>
-              </select>
-            </div>
-            <textarea id="r-comment" rows="3" placeholder="Share your experience..." required style="margin-top:8px"></textarea>
-            <div style="display:flex; gap:8px; margin-top:8px">
-              <button class="btn btn-primary" type="submit">Submit Review</button>
-              <button class="btn btn-outline" type="button" id="r-clear">Clear</button>
-            </div>
-          </form>
-        </section>
-      `;
-      renderReviews();
-      document.getElementById('review-form').addEventListener('submit', onSubmitReview);
-      document.getElementById('r-clear').addEventListener('click', ()=>{ document.getElementById('r-name').value=''; document.getElementById('r-comment').value=''; });
-    }
-
-    function renderReviews(){
-      const reviews = lsGet('vk_reviews', []);
-      const el = document.getElementById('reviews-list');
-      if(!el) return;
-      if(reviews.length === 0){ el.innerHTML = '<div class="small muted">No reviews yet.</div>'; return; }
-      el.innerHTML = reviews.slice(0,10).map(r => `
-        <div style="padding:10px; border-radius:8px; margin-bottom:8px; background:linear-gradient(180deg,#fff,#fffaf9);">
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <strong>${escapeHtml(r.name)}</strong>
-            <div class="small">★ ${r.rating}</div>
-          </div>
-          <div class="small" style="margin-top:6px">${escapeHtml(r.comment)}</div>
-        </div>
-      `).join('');
-      updateRatingsUI();
-    }
-
-    function onSubmitReview(e){
+    // Reservation system
+    document.querySelector(".reservation-form").addEventListener("submit", function(e){
       e.preventDefault();
-      const name = document.getElementById('r-name').value.trim() || 'Guest';
-      const rating = parseInt(document.getElementById('r-rating').value);
-      const comment = document.getElementById('r-comment').value.trim();
-      if(!comment) return alert('Please write a comment.');
-      const reviews = lsGet('vk_reviews', []);
-      reviews.unshift({name, rating, comment, time: nowISO()});
-      if(reviews.length>250) reviews.pop(); // cap
-      lsSet('vk_reviews', reviews);
-      renderReviews();
-      showNotification('New Review', `${name} left a ${rating}-star review.`);
-      alert('Thank you for your review!');
-      e.target.reset();
-    }
-
-    /* -------------------- Menu -------------------- */
-    function renderMenu(root){
-      const menu = lsGet('vk_menu', []);
-      root.innerHTML = `
-        <section class="card">
-          <h3>Menu</h3>
-          <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
-            <input id="search-q" placeholder="Search menu (name or category)" style="flex:1" />
-            <select id="filter-cat" style="width:140px">
-              <option value="all">All</option>
-              <option value="Veg">Veg</option>
-              <option value="Non-Veg">Non-Veg</option>
-            </select>
-          </div>
-          <div class="menu-grid" id="menu-list" style="margin-top:12px"></div>
-        </section>
-      `;
-      document.getElementById('search-q').addEventListener('input', renderMenuList);
-      document.getElementById('filter-cat').addEventListener('change', renderMenuList);
-      renderMenuList();
-    }
-
-    function renderMenuList(){
-      const q = (document.getElementById('search-q')?.value || '').toLowerCase();
-      const cat = document.getElementById('filter-cat')?.value || 'all';
-      const menu = lsGet('vk_menu', []).filter(m => (cat==='all' || m.category === cat) && (m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q) || m.category.toLowerCase().includes(q)));
-      const el = document.getElementById('menu-list');
-      if(!el) return;
-      if(menu.length===0) el.innerHTML = '<div class="small muted">No items found.</div>';
-      else el.innerHTML = menu.map(m => `
-        <div class="menu-item">
-          <div class="thumb"><img src="${m.image}" alt="${m.name}"></div>
-          <div style="flex:1">
-            <h4>${m.name}</h4>
-            <div class="small">${m.desc}</div>
-            <div style="margin-top:8px; display:flex; gap:8px; align-items:center;">
-              <div class="menu-price">${fmtCurrency(m.price)}</div>
-              <button class="btn btn-primary" onclick="addToCart(${m.id})">Add to cart</button>
-            </div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    /* -------------------- Cart & Orders -------------------- */
-    function updateCartCount(){
-      const cart = lsGet('vk_cart', []);
-      const count = cart.reduce((s,i)=>s.qty + s.qty*0, 0) || cart.reduce((s,i)=>s.qty + s.qty*0, 0); // simpler read
-      const totalQty = cart.reduce((s,i)=>s.qty + s.qty*0, 0);
-      const navCount = cart.reduce((s,i)=>s.qty + s.qty*0,0);
-      $('#nav-cart').textContent = cart.reduce((s,i)=>s.qty + s.qty*0,0) || cart.reduce((s,i)=>s.qty,0) || cart.length;
-      // better calculate:
-      const realCount = cart.reduce((s,i)=>s.qty,0);
-      $('#nav-cart').textContent = realCount;
-    }
-
-    function renderMiniCart(){
-      const cart = lsGet('vk_cart', []);
-      const mini = document.getElementById('mini-cart');
-      if(!mini) return;
-      if(!cart.length) mini.innerHTML = `<div class="cart-empty">No items in cart</div>`;
-      else {
-        const menu = lsGet('vk_menu', []);
-        const html = cart.map(i => {
-          const item = menu.find(m=>m.id===i.id);
-          return `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px">
-            <div><strong>${item.name}</strong><div class="small">Qty: ${i.qty}</div></div>
-            <div style="text-align:right"><div>${fmtCurrency(item.price * i.qty)}</div><div class="small"><button class="btn btn-outline" onclick="removeFromCart(${i.id})">Remove</button></div></div>
-          </div>`;
-        }).join('') + `<div style="text-align:right; margin-top:8px"><strong>Total: ${fmtCurrency(cart.reduce((s,i)=>s + (menu.find(m=>m.id===i.id).price*i.qty),0))}</strong></div>
-           <div style="margin-top:8px; display:flex; gap:8px"><button class="btn btn-primary" onclick="renderView('cart')">View Cart</button><button class="btn btn-outline" onclick="clearCart()">Clear</button></div>`;
-        mini.innerHTML = html;
-      }
-      updateCartCount();
-    }
-
-    function addToCart(id){
-      const cart = lsGet('vk_cart', []);
-      const idx = cart.findIndex(i=>i.id===id);
-      if(idx >= 0) cart[idx].qty += 1;
-      else cart.push({id, qty:1});
-      lsSet('vk_cart', cart);
-      renderMiniCart();
-      showNotification('Cart Updated', 'Item added to cart.');
-    }
-
-    function removeFromCart(id){
-      let cart = lsGet('vk_cart', []);
-      cart = cart.filter(i=>i.id !== id);
-      lsSet('vk_cart', cart);
-      renderMiniCart();
-    }
-
-    function clearCart(){
-      if(!confirm('Clear cart?')) return;
-      lsSet('vk_cart', []);
-      renderMiniCart();
-    }
-
-    // Expose to inline handlers
-    window.addToCart = addToCart;
-    window.removeFromCart = removeFromCart;
-    window.clearCart = clearCart;
-    window.renderView = renderView;
-
-    function renderCart(root){
-      const cart = lsGet('vk_cart', []);
-      const menu = lsGet('vk_menu', []);
-      if(cart.length === 0){
-        root.innerHTML = `<section class="card"><h3>Your Cart</h3><div class="cart-empty">Cart is empty.</div></section>`;
-        return;
-      }
-      const itemsHtml = cart.map(i => {
-        const m = menu.find(x=>x.id===i.id);
-        return `<div class="cart-row"><div><strong>${m.name}</strong><div class="small">Qty: ${i.qty}</div></div><div>${fmtCurrency(m.price*i.qty)}</div></div>`;
-      }).join('');
-      const total = cart.reduce((s,i)=>s + menu.find(x=>x.id===i.id).price * i.qty, 0);
-      root.innerHTML = `<section class="card"><h3>Your Cart</h3>${itemsHtml}<div style="text-align:right; margin-top:8px"><strong>Total: ${fmtCurrency(total)}</strong></div>
-        <div style="margin-top:10px; display:flex; gap:8px">
-          <button class="btn btn-primary" id="checkout-btn">Checkout</button>
-          <button class="btn btn-outline" onclick="clearCart()">Clear Cart</button>
-        </div>
-      </section>`;
-      document.getElementById('checkout-btn').addEventListener('click', renderCheckout);
-    }
-
-    function renderCheckout(){
-      const root = document.getElementById('view-root');
-      const cart = lsGet('vk_cart', []);
-      const menu = lsGet('vk_menu', []);
-      const total = cart.reduce((s,i)=>s + menu.find(x=>x.id===i.id).price * i.qty, 0);
-      root.innerHTML = `<section class="card"><h3>Checkout</h3>
-        <div style="margin-bottom:8px">${cart.map(i=>`<div style="display:flex;justify-content:space-between"><div>${menu.find(x=>x.id===i.id).name} x ${i.qty}</div><div>${fmtCurrency(menu.find(x=>x.id===i.id).price * i.qty)}</div></div>`).join('')}</div>
-        <div style="text-align:right; margin-bottom:12px"><strong>Total: ${fmtCurrency(total)}</strong></div>
-        <form id="checkout-form">
-          <label>Full name<input type="text" id="c-name" required></label>
-          <label>Phone<input type="tel" id="c-phone" required></label>
-          <label>Delivery address / location<textarea id="c-address" rows="2" required></textarea></label>
-          <label>Payment method
-            <select id="c-payment">
-              <option value="cod">Cash on Delivery</option>
-              <option value="online">Online (demo)</option>
-            </select>
-          </label>
-          <div style="margin-top:8px; display:flex; gap:8px">
-            <button class="btn btn-primary" type="submit">Place Order</button>
-            <button class="btn btn-outline" type="button" onclick="renderView('menu')">Continue Shopping</button>
-          </div>
-        </form>
-      </section>`;
-      document.getElementById('checkout-form').addEventListener('submit', onPlaceOrder);
-    }
-
-    function onPlaceOrder(e){
-      e.preventDefault();
-      const cart = lsGet('vk_cart', []);
-      if(cart.length===0) return alert('Cart empty');
-      const name = document.getElementById('c-name').value.trim();
-      const phone = document.getElementById('c-phone').value.trim();
-      const address = document.getElementById('c-address').value.trim();
-      const payment = document.getElementById('c-payment').value;
-      if(!name || !phone || !address) return alert('Please complete contact details.');
-      const menu = lsGet('vk_menu', []);
-      const total = cart.reduce((s,i)=>s + menu.find(x=>x.id===i.id).price * i.qty, 0);
-      const order = {id: Date.now(), name, phone, address, payment, items: cart, amount: total, status: payment === 'online' ? 'paid' : 'pending', time: nowISO()};
-      const orders = lsGet('vk_orders', []);
-      orders.unshift(order); lsSet('vk_orders', orders);
-      lsSet('vk_cart', []); renderMiniCart();
-      showNotification('New Order', `Order #${order.id} placed — ${fmtCurrency(order.amount)}`);
-      alert('Order placed (demo). Order ID: ' + order.id);
-      renderView('home');
-    }
-
-    /* -------------------- Reservations -------------------- */
-    function renderReservations(root){
-      root.innerHTML = `
-        <section class="card">
-          <h3>Reserve a Table</h3>
-          <p class="small muted">Book a table in seconds. We'll confirm your reservation.</p>
-          <form id="reserve-form" style="margin-top:8px">
-            <div class="reserve-grid">
-              <label>Full name<input type="text" id="res-name" required></label>
-              <label>Phone<input type="tel" id="res-phone" required></label>
-            </div>
-            <div class="reserve-grid" style="margin-top:8px">
-              <label>Date<input type="date" id="res-date" required></label>
-              <label>Time<input type="time" id="res-time" required></label>
-            </div>
-            <div style="margin-top:8px">
-              <label>Guests<select id="res-guests">
-                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                <option value="5">5+</option>
-              </select></label>
-            </div>
-            <div style="margin-top:10px; display:flex; gap:8px">
-              <button class="btn btn-primary" type="submit">Request Reservation</button>
-              <button class="btn btn-outline" type="button" id="view-res-list">View My Reservations</button>
-            </div>
-            <div id="reserve-msg" style="margin-top:10px"></div>
-          </form>
-        </section>
-      `;
-      document.getElementById('reserve-form').addEventListener('submit', onReserve);
-      document.getElementById('view-res-list').addEventListener('click', showReservationsList);
-    }
-
-    function onReserve(e){
-      e.preventDefault();
-      const name = document.getElementById('res-name').value.trim();
-      const phone = document.getElementById('res-phone').value.trim();
-      const date = document.getElementById('res-date').value;
-      const time = document.getElementById('res-time').value;
-      const guests = document.getElementById('res-guests').value;
-      if(!name || !phone || !date || !time) return alert('Please fill all fields.');
-      const res = {id: Date.now(), name, phone, date, time, guests, status:'pending', created: nowISO()};
-      const arr = lsGet('vk_reservations', []);
-      arr.unshift(res); lsSet('vk_reservations', arr);
-      showNotification('New Reservation', `${name} - ${guests} guests on ${date} at ${time}`);
-      document.getElementById('reserve-msg').innerHTML = `<div style="padding:10px; border-radius:8px; background:#fff7f7; border:1px solid rgba(198,40,40,0.08)">Reservation requested — we will confirm shortly. Ref: <strong>${res.id}</strong></div>`;
-      // Reset lightly
-      document.getElementById('reserve-form').reset();
-    }
-
-    function showReservationsList(){
-      const arr = lsGet('vk_reservations', []);
-      const list = arr.slice(0, 50).map(r=>`<div style="padding:8px; border-radius:8px; margin-bottom:8px; background:linear-gradient(180deg,#fff,#fffaf9)"><div style="display:flex;justify-content:space-between"><strong>${r.name}</strong><div class="small">${r.date} ${r.time}</div></div><div class="small">Guests: ${r.guests} • Ref: ${r.id}</div></div>`).join('');
-      const root = document.getElementById('view-root');
-      root.innerHTML = `<section class="card"><h3>Your Reservations</h3>${list || '<div class="small muted">No reservations found.</div>'}<div style="margin-top:8px"><button class="btn btn-outline" onclick="renderView('reservations')">Back</button></div></section>`;
-    }
-
-    /* -------------------- Branches / Services / About / Contact -------------------- */
-    function renderBranches(root){
-      const branches = [
-        {name:"Vishnu's Kitchen - Main", address:"Guntur, Lakshmi Puram", hours:"10:00 AM - 10:00 PM", phone: SITE.phone},
-        {name:"Vishnu's Kitchen - City Center (coming soon)", address:"Guntur City Center", hours:"TBD", phone:"TBD"}
-      ];
-      root.innerHTML = `<section class="card"><h3>Branches</h3>${branches.map(b=>`<div style="padding:10px; border-radius:8px; margin-bottom:8px; background:linear-gradient(180deg,#fff,#fffaf9)"><strong>${b.name}</strong><div class="small">${b.address}<br/>${b.hours}<br/>${b.phone}</div></div>`).join('')}</section>`;
-    }
-
-    function renderServices(root){
-      root.innerHTML = `<section class="card"><h3>Services</h3><ul><li>Dine-in with cozy seating</li><li>Takeaway & Home Delivery</li><li>Table reservations</li><li>Catering for occasions</li><li>Online ordering via Swiggy & Zomato</li></ul></section>`;
-    }
-
-    function renderAbout(root){
-      root.innerHTML = `<section class="card"><h3>About ${SITE.name}</h3><p class="small muted">Located in ${SITE.location}, ${SITE.name} blends traditional flavors with modern cooking practices. Our chefs use fresh ingredients daily, and our team focuses on hospitality and hygiene.</p><h4 style="margin-top:12px">Owner</h4><p class="small"><strong>${SITE.owner}</strong> • Phone: ${SITE.phone}</p></section>`;
-    }
-
-    function renderContact(root){
-      root.innerHTML = `<section class="card"><h3>Contact</h3><p class="small">For general inquiries or catering, reach out to the owner:</p><div style="padding:12px; border-radius:8px; background:linear-gradient(180deg,#fff,#fffaf9)"><strong>${SITE.owner}</strong><div class="small">Phone: ${SITE.phone}</div><div class="small" style="margin-top:6px">Address: ${SITE.location}</div></div><div style="margin-top:12px"><h4>Send us a message</h4><form id="contact-form"><label>Your name<input type="text" id="cfn" required></label><label>Phone<input type="tel" id="cfp" required></label><label>Message<textarea id="cfm" rows="3" required></textarea></label><div style="margin-top:8px"><button class="btn btn-primary" type="submit">Send</button></div></form></div></section>`;
-      document.getElementById('contact-form').addEventListener('submit', function(e){ e.preventDefault(); alert('Message received (demo). We will contact you soon.'); e.target.reset(); });
-    }
-
-    /* -------------------- Utilities continued -------------------- */
-    function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-    /* -------------------- Init -------------------- */
-    function init(){
-      updateRatingsUI();
-      renderMiniCart();
-      renderView('home');
-      // simulated realtime
-      startSimulatedRealtime();
-      // occasionally show a welcome notification
-      setTimeout(()=> showNotification('Welcome', `${SITE.name} — Order online or reserve a table.`), 1200);
-    }
-
-    init();
-
-    // expose renderView to global for nav back buttons
-    window.renderView = renderView;
-
-    /* -------------------- Notes for production --------------------
-      - This demo stores data in localStorage. For production:
-        * Move menu, orders, reservations, and reviews to a backend (Node/Express, Firebase, etc.)
-        * For realtime notifications: integrate Pusher / Firebase Cloud Messaging / WebSockets
-        * For payments (India): Razorpay. For global: Stripe. Always perform payment server-side.
-        * Replace Swiggy & Zomato links with your merchant/store links once registered.
-        * Secure all endpoints behind authentication for admin features.
-      - Images: replace images/IMAGE1..IMAGE8 with real photos (logo, hero, interior, dishes).
-    ----------------------------------------------------------------- */
+      alert("✅ Your table has been reserved successfully!");
+      this.reset();
+    });
   </script>
+
 </body>
 </html>
